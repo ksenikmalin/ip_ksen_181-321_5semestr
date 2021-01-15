@@ -8,25 +8,39 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="m-5">Услуги</h1>
+  <a href="/admin" class="btn btn-link mt-5">Вход в административную панель</a>
+      <h1 class="m-5" style="text-align: center;">Услуги</h1>
   <div class="row justify-content-start">
-        {% for services in Services_list %}
-    <div class="col-3">
-        <div class="card" style="width: 18rem; height: 25rem;">
-          <div class="card-body">
-            <h5 class="card-title">{{ services.naimenovaniye }}</h5>
-            <p class="card-text">{{ services.id_repair_type}}</p>
-            <p class="card-text">{{ services.id_object}}</p>
-            <p class="card-text">{{ services.id_duration}}</p>
-            <a href="/{{ services.id }}" class="btn btn-primary">Подробнее</a>
-          </div>
-        </div>
-    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>Вид работы</th>
+          <th>Объект</th>
+          <th>Продолжительность</th>
+        </tr>
+      </thead>
+    </table>
+        {% for services in service_list %}
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <td>{{ services.naimenovaniye}}</td>
+              <td>{{ services.id_repair_type}}</td>
+              <td>{{ services.id_object}}</td>
+              <td>{{ services.id_duration}} дней</td>
+              <td> <a href="/{{ service.id }}" class="btn btn-primary">Подробнее</a></td>
+            </tr>
+          </tbody>
+        </table>
       {% endfor %}
   </div>
-    <a href="/admin" class="btn btn-link mt-5">Панель администратора</a>
+    
 </div>
-
 
 </body>
 </html>
+
+
+
+
